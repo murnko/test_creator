@@ -96,7 +96,7 @@ for (int i = 0; i<rozm_bazy; i++){
     string dobra;
     string pytanie;
     string * odp = new string [liczba_odp];
-    string * Output = new string[2*liczba_pytan*(liczba_odp+2)];
+    string * Output = new string[2*liczba_pytan*(liczba_odp+2)+1];
 
 for(int i = 0; i < liczba_pytan; i++){
         //D
@@ -157,15 +157,18 @@ for(int i = 0; i < liczba_pytan; i++){
         odp[liczba_odp-1] = dobra;
         shuffleS(odp, liczba_odp, i);
         //wybór punktow i pytania
-        Output[6*i] = punkt;
-        Output[6*i+1] = pytanie;
+        Output[7*i] = punkt;
+        Output[7*i+1] = pytanie;
         //przejsce przez odpowiedzi
         for(int w=0; w < liczba_odp; w++ ){
-            Output[6*i+w+2] = odp[w];
-            cout << odp[w] << endl;
+            Output[7*i+w+2] = odp[w];
+            //cout << odp[w] << endl;
         }
+        Output[7*i+liczba_odp+3] = ' ';
         cout << "koniecPytania" << endl;
         }
+
+
 
 for (int z =0; z < 2*liczba_pytan*(liczba_odp+2); z++){
     cout << Output[z]<< endl;
@@ -173,7 +176,7 @@ for (int z =0; z < 2*liczba_pytan*(liczba_odp+2); z++){
 cout << "\n"; return -1;
         baza_pytan.close();
         getchar();
-return 0;d
+return 0;
 }
 /*************************
 FUNKCJE
