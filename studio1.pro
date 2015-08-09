@@ -15,11 +15,9 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 
-SOURCES += main.cpp \
-    parsing.cpp
+SOURCES += main.cpp
 HEADERS += \
-    main.h \
-    parsing.h
+    main.h
 INCLUDEPATH +=/usr/local/include
 INCLUDEPATH +=/home/murnko/Downloads/libharu-libharu-a83bd80/demo/
 

@@ -1,6 +1,5 @@
 #include <QCoreApplication>
 #include "main.h"
-#include "parsing.h"
 
 /* Format bazy pytań
   1|Pytanie
