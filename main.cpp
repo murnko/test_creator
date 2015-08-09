@@ -153,27 +153,27 @@ for(int i = 0; i < liczba_pytan; i++){
             odp[q] = bledne[q];
         }
 
-        //na ostatniej pozycji dodany zostaje
+        //na ostatniej pozycji dodana zostaje poprawna odpowiedz + mieszanie
         odp[liczba_odp-1] = dobra;
         shuffleS(odp, liczba_odp, i);
-cout << "\n"; return -1;
+        //wybór punktow i pytania
         Output[6*i] = punkt;
         Output[6*i+1] = pytanie;
-
+        //przejsce przez odpowiedzi
         for(int w=0; w < liczba_odp; w++ ){
             Output[6*i+w+2] = odp[w];
-            //cout << odp[w] << endl;
+            cout << odp[w] << endl;
         }
-
-
         cout << "koniecPytania" << endl;
         }
+
 for (int z =0; z < 2*liczba_pytan*(liczba_odp+2); z++){
     cout << Output[z]<< endl;
 }
+cout << "\n"; return -1;
         baza_pytan.close();
         getchar();
-return 0;
+return 0;d
 }
 /*************************
 FUNKCJE

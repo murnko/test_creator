@@ -27,4 +27,4 @@ LIBS += -L/usr/local/lib -lhpdf
 LIBS += -L/home/murnko/Downloads/libharu-libharu-a83bd80/demo/ -grid_sheet
 
 DISTFILES += \
-    komentarz
+    komentarz.txt
