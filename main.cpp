@@ -1,6 +1,6 @@
 #include <QCoreApplication>
 #include "main.h"
-#include "parsing.h"
+
 
 /* Format bazy pytań
   1|Pytanie
@@ -35,7 +35,8 @@ int punktacja[100]; //każdy wiersz odpowiada punktacji za kolejne pyatnie
 int main(){
 
     baza_pytan.open("/media/murnko/store/projekty/studio1/Baza.txt");
-    if( !baza_pytan.good() )  {cout << "bazaZla\n"; return -1;}
+    sprawdz_baze(baza_pytan);
+    //if( !baza_pytan.good() )  {cout << "bazaZla\n"; return -1;}
 
     baza_pytan.clear();
     baza_pytan.seekg(0, ios::beg);

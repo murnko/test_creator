@@ -16,7 +16,7 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    parsing.cpp
+    funkcje.cpp
 HEADERS += \
     main.h \
     funkcje.h

@@ -3,7 +3,7 @@
 #include "main.h"
 
 
-void sprawdz_baze(ifstream baza_pytan);
+int sprawdz_baze(ifstream &baza_pytan);
 //chryste dziala
 #endif // FUNKCJE
 
