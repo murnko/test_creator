@@ -19,7 +19,7 @@ SOURCES += main.cpp \
     parsing.cpp
 HEADERS += \
     main.h \
-    parsing.h
+    funkcje.h
 INCLUDEPATH +=/usr/local/include
 INCLUDEPATH +=/home/murnko/Downloads/libharu-libharu-a83bd80/demo/
 
