@@ -1,7 +1,6 @@
 #include <QCoreApplication>
 #include "main.h"
 
-
 /* Format bazy pytań
   1|Pytanie
   Odpowiedz_dobra

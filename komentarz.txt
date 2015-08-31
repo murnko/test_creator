@@ -11,11 +11,11 @@ PARSOWANIE BAZY
 5. Pobieranie wierszy > OK
 
 PARSOWANIE WIERSZY
-dla pierwszego wiersza
+
 6. Wydzielenie pytania > OK
 7. Wydzielenie dobrej odpowiedzi > OK 
 8. Wydzielenie punktacji > OK
-9. Parsing złych odpowiedzi
+9. Parsing złych odpowiedzi > OK
 
 LIBHARU
 1.
