@@ -1,6 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
-
+using namespace std;
 #include "main.h"
 #include <fstream>
 #include <string>
@@ -14,6 +14,7 @@
 #include <math.h>
 #include <ctime>
 
+#include "funkcje.h"
 
 
 
