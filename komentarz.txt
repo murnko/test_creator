@@ -16,3 +16,6 @@ dla pierwszego wiersza
 7. Wydzielenie dobrej odpowiedzi > OK 
 8. Wydzielenie punktacji > OK
 9. Parsing złych odpowiedzi
+
+LIBHARU
+1.
