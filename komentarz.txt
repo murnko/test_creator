@@ -3,7 +3,7 @@ PARSOWANIE BAZY
 1. Sprawdzenie bazy > OK
 2. Sprawdzenie rozmiaru bazy > OK
 3. Pobranie punktacji pytań > OK
-4. Wybór pytań > NOPE -> czasem zasysa trzy '0' zamiast wierszy któregoś pytania, oczywiście rzutuje to na błędy w dalszej części, więc trzeba tego pilnować, dopóki nie zostanie poprawione (clue: możliwe, że robi tak dla ostatniegi pytania przeskakując w nulle)
+4. Wybór pytań > WARN -> czasem zasysa trzy '0' zamiast wierszy któregoś pytania, oczywiście rzutuje to na błędy w dalszej części, więc trzeba tego pilnować, dopóki nie zostanie poprawione (clue: możliwe, że robi tak dla ostatniegi pytania przeskakując w nulle)
 	Mieszanie > OK
 	Odczyt danych > OK
 	Naliczanie > OK
@@ -18,4 +18,8 @@ PARSOWANIE WIERSZY
 9. Parsing złych odpowiedzi > OK
 
 LIBHARU
-1.
+1. Kontrola pozycji kursora > OK
+2. Zamiana polskich znaków na działające > OK
+3. Dodanie kratek odpowiedzi > PEND
+4. Kontynuacja pyatnai w tej samej linii > PEND
+5. Rysunki > PEND

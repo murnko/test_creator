@@ -17,10 +17,12 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    funkcje.cpp
+    funkcje.cpp \
+    libh.cpp
 HEADERS += \
     main.h \
-    funkcje.h
+    funkcje.h \
+    libh.h
 INCLUDEPATH +=/usr/local/include
 INCLUDEPATH +=/home/murnko/Downloads/libharu-libharu-a83bd80/demo/
 

@@ -20,9 +20,10 @@ ifstream baza_pytan;
 string pobraneWiersze[1024];
 int wybrane_pytania[10];
 int punktacja[100]; //każdy wiersz odpowiada tabeli odpowiada za kolejne pyatnie
+jmp_buf env;
 
-
-int main(){
+int main(int argc, char **argv)
+{
 
     baza_pytan.open("/media/murnko/store/projekty/studio1/Baza.txt");
     size_t rozm_bazy = sprawdz_baze(baza_pytan); //DONE
@@ -36,6 +37,57 @@ int main(){
     string * Output = pobierz_pytania(baza_pytan,liczba_pytan,wybrane_wiersze,wiersze_tmp,
                                 pobraneWiersze,rozm_bazy, liczba_odp);
 
+
+    char* testlibharu = "Ąą";
+
+    HPDF_Doc  pdf;
+    HPDF_Page page;
+    char fname[256];
+    HPDF_Font font;
+    HPDF_REAL page_height, page_width;
+    HPDF_Point position;
+    testlibharu = dodajOgonki(testlibharu);
+    strcpy (fname, argv[0]);
+    strcat (fname, ".pdf");
+
+    pdf = HPDF_New (error_handler, NULL);
+    if (!pdf) {
+        printf ("error: cannot create PdfDoc object\n");
+        return 1;
+    }
+
+    if (setjmp(env)) {
+        HPDF_Free (pdf);
+        return 1;
+    }
+
+    page = HPDF_AddPage (pdf);
+    HPDF_Page_SetSize (page, HPDF_PAGE_SIZE_A4, HPDF_PAGE_PORTRAIT);
+
+    //print_grid  (pdf, page);
+
+    page_height = HPDF_Page_GetHeight (page);
+    page_width = HPDF_Page_GetWidth(page);
+
+    font = HPDF_GetFont (pdf, "Helvetica", "ISO8859-2");
+    HPDF_Page_SetTextLeading (page, 20);
+    //HPDF_Page_Stroke (page);
+
+    HPDF_Page_BeginText (page);
+
+    HPDF_Page_SetFontAndSize (page, font, 10);
+    HPDF_Page_TextRect (page, 0, page_height-10, page_width, 0,
+                testlibharu, HPDF_TALIGN_JUSTIFY, NULL);
+
+
+
+    HPDF_Page_EndText (page);
+    /* save the document to a file */
+    HPDF_SaveToFile (pdf, fname);
+
+    /* clean up */
+    HPDF_Free (pdf);
+
 //Roboczy print wyniku posredniego
     cout<< "OUTPUT" << endl;
     for (int z =0; z < 2*liczba_pytan*(liczba_odp+2); z++){
@@ -47,7 +99,7 @@ int main(){
 
 
     return 0;
-    }
+}
 /*************************
 FUNKCJE roboczo
 

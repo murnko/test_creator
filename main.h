@@ -14,8 +14,14 @@ using namespace std;
 #include <math.h>
 #include <ctime>
 
-#include "funkcje.h"
+#include "hpdf.h"
+#include <setjmp.h>
+#include <string.h>
 
+
+
+#include "funkcje.h"
+#include "libh.h"
 
 
 #endif // MAIN_H
