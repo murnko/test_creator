@@ -1,4 +1,4 @@
-#include <QCoreApplication>
+﻿#include <QCoreApplication>
 #include "main.h"
 
 /* Format bazy pytań
@@ -24,6 +24,10 @@ jmp_buf env;
 
 int main(int argc, char **argv)
 {
+    string s = "ó";
+    cout << static_cast<int>(s[1]) << endl;
+
+    int tablica_w[25][100];
 
     baza_pytan.open("/media/murnko/store/projekty/studio1/Baza.txt");
     size_t rozm_bazy = sprawdz_baze(baza_pytan); //DONE
@@ -39,7 +43,10 @@ int main(int argc, char **argv)
 
 
     char* libHaruIN[20];
+    char* linetmpchar;
     string linetmp;
+    size_t pos;
+    string target = "ł";
     int n = 0;
     linetmp.append("1. ");
     for (int i=0; i < 7*liczba_pytan+1; i++){
@@ -47,9 +54,17 @@ int main(int argc, char **argv)
 
         if (i != 0){
         if (!(i%7)){
+            cout <<linetmp<< endl;
+            int idx = 0, loop = 0 ;
 
-//            cout <<linetmp<< endl;
+            while (idx != -1){
+
+            idx = linetmp.find(target,idx+1);
+            tablica_w[n][loop] = idx;
+            loop++;
+            }
             libHaruIN[n] = strdup(linetmp.c_str());
+            libHaruIN[n] = dodajOgonki(libHaruIN[n]);
             cout <<libHaruIN[n]<<endl;
             n++;
             linetmp = "";
@@ -74,6 +89,9 @@ int main(int argc, char **argv)
 
 //LIBHARU
     char* testlibharu = libHaruIN[0];
+//    char* testlibharu = "żżż";
+
+
 
     HPDF_Doc  pdf;
     HPDF_Page page;
@@ -81,7 +99,7 @@ int main(int argc, char **argv)
     HPDF_Font font;
     HPDF_REAL page_height, page_width;
     HPDF_Point position;
-    testlibharu = dodajOgonki(testlibharu);
+//    testlibharu = dodajOgonki(testlibharu);
     strcpy (fname, argv[0]);
     strcat (fname, ".pdf");
 
@@ -104,15 +122,15 @@ int main(int argc, char **argv)
     page_height = HPDF_Page_GetHeight (page);
     page_width = HPDF_Page_GetWidth(page);
 
-    font = HPDF_GetFont (pdf, "Helvetica", "ISO8859-2");
+    font = HPDF_GetFont (pdf, "Times-Roman", "ISO8859-2");
     HPDF_Page_SetTextLeading (page, 20);
     //HPDF_Page_Stroke (page);
 
     HPDF_Page_BeginText (page);
 
     HPDF_Page_SetFontAndSize (page, font, 10);
-    HPDF_Page_TextRect (page, 5, page_height-10, page_width, 0,
-                testlibharu, HPDF_TALIGN_JUSTIFY, NULL);
+    HPDF_Page_TextRect (page, 5, page_height-10, page_width-10, 0,
+                libHaruIN[0], HPDF_TALIGN_JUSTIFY, NULL);
     position = HPDF_Page_GetCurrentTextPos(page);
     cout << position.x << endl;
     cout << position.y << endl;
@@ -145,19 +163,3 @@ FUNKCJE roboczo
 
 *******************************/
 
-
-
-//Parsing zlych odpowiedzi
-/*
-std::string s = "scott>=tiger>=mushroom";
-std::string delimiter = ">=";
-
-size_t pos = 0;
-std::string token;
-while ((pos = s.find(delimiter)) != std::string::npos) {
-    token = s.substr(0, pos);
-    std::cout << token << std::endl;
-    s.erase(0, pos + delimiter.length());
-}
-std::cout << s << std::endl;
-*/

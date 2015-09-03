@@ -1,4 +1,4 @@
-#include "main.h"
+﻿#include "main.h"
 #include "funkcje.h"
 #include "libh.h"
 
@@ -27,14 +27,12 @@ error_handler  (HPDF_STATUS   error_no,
 //    snprintf (buf, 512, ".[%d]%0.2f %0.2f", no, pos.x, pos.y);
 //    HPDF_Page_ShowText(page, buf);
 //}
-
 typedef struct {
-    char c;
+    int c;
     int i;
 } para;
-
 const static para odpowiedniki_polskich[] = {
-    { 'Ą', 161 },
+
     { 'Ć', 198 },
     { 'Ę', 202 },
     { 'Ł', 163 },
@@ -46,39 +44,40 @@ const static para odpowiedniki_polskich[] = {
     { 'ą', 177 },
     { 'ć', 230 },
     { 'ę', 234 },
-    { 'ł', 181 },
+    { 'ł', 179 },
     { 'ń', 241 },
     { 'ó', 243 },
     { 'ś', 182 },
     { 'ź', 188 },
     { 'ż', 191 }
-};
 
+};
 const int LICZBA_POLSKICH_ZNAKOW = sizeof( odpowiedniki_polskich ) / sizeof( para );
 
-void zamienZnakWCiagu(char * wejsciowy, unsigned char znak_obecny, unsigned char znak_docelowy ) {
-    char * pch = strchr( wejsciowy, int(znak_obecny) );
+void zamienZnakWCiagu( char * wejsciowy, unsigned char znak_obecny, unsigned char znak_docelowy ) {
+    char * pch = strchr( wejsciowy, znak_obecny );
     unsigned pozycja = 0;
 
     while( pch != NULL ) {
         pozycja = pch - wejsciowy;
+        cout << "Debug: "<< pozycja;//(int)wejsciowy[pozycja];
         wejsciowy[ pozycja ] =( char ) znak_docelowy;
         pch = strchr( pch + 1, znak_obecny );
     }
 }
 
-void usunZNapisu(char * wejsciowy, unsigned pozycja ) {
+void usunZNapisu( char * wejsciowy, unsigned pozycja ) {
     unsigned i;
-    for( i = pozycja; i < (unsigned)strlen(wejsciowy); ++i )
+    for( i = pozycja; i < strlen( wejsciowy ); ++i )
          wejsciowy[ i ] = wejsciowy[ i + 1 ];
 
     wejsciowy[ i ] = '\0';
 }
 
 char * dodajOgonki( char * wejsciowy ) {
-    //char * tymczasowy = (char*)malloc( sizeof( char ) * (unsigned)strlen( wejsciowy ) + 3 );
-    //const char * cos = "a";
-    char * wyjsciowy = (char*) malloc( sizeof( char ) * (unsigned)strlen( wejsciowy ) + 3 );
+//    unsigned char * tymczasowy = malloc( sizeof( char ) * strlen( wejsciowy ) + 3 );
+//    const unsigned char * cos = "a";
+    char * wyjsciowy = (char*)malloc( sizeof( char ) * strlen( wejsciowy ) + 3 );
     unsigned i = 0;
 
     wyjsciowy[ 0 ] = 'a';
@@ -93,9 +92,10 @@ char * dodajOgonki( char * wejsciowy ) {
 
     wyjsciowy[ i + 2 ] = '\0';
 
-    for( i = 0; i < strlen( wyjsciowy ); ++i )
-    if( !isalpha( wyjsciowy[ i ] ) )
-         usunZNapisu( wyjsciowy, i );
+//    for( i = 0; i < strlen( wyjsciowy ); ++i )
+//    if( !isalnum( wyjsciowy[ i ] ))
+//        if (!(wyjsciowy[i] != " "))
+//         usunZNapisu( wyjsciowy, i );
 
     return wyjsciowy;
 }

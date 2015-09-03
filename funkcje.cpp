@@ -1,4 +1,4 @@
-#include "main.h"
+﻿#include "main.h"
 #include "funkcje.h"
 
 size_t sprawdz_baze(ifstream &baza_pytan){
@@ -146,7 +146,6 @@ string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
      string * Output = new string[2*liczba_pytan*(liczba_odp+2)+1];
 
      for(int i = 0; i < liczba_pytan; i++){
-             //D
              //cout << pobraneWiersze[i*3+2]<<endl;
 
              string delimiter = "|";

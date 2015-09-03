@@ -1,4 +1,4 @@
-Przebieg algorytmu:
+﻿Przebieg algorytmu:
 PARSOWANIE BAZY
 1. Sprawdzenie bazy > OK
 2. Sprawdzenie rozmiaru bazy > OK
@@ -24,3 +24,4 @@ LIBHARU
 4. Dodanie kratek odpowiedzi > PEND
 5. Kontynuacja pytania w tej samej linii > PEND
 6. Rysunki > PEND
+
