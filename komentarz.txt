@@ -19,7 +19,8 @@ PARSOWANIE WIERSZY
 
 LIBHARU
 1. Kontrola pozycji kursora > OK
-2. Zamiana polskich znaków na działające > OK
-3. Dodanie kratek odpowiedzi > PEND
-4. Kontynuacja pyatnai w tej samej linii > PEND
-5. Rysunki > PEND
+2. Zamiana polskich znaków na działające >
+3. Przygotowanie pytań do wrzucenia > OK
+4. Dodanie kratek odpowiedzi > PEND
+5. Kontynuacja pytania w tej samej linii > PEND
+6. Rysunki > PEND

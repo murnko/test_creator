@@ -118,7 +118,7 @@ shuffle(arr, baz/3);
     }
 }
 
-string *pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wiersze[],int wiersze_tmp[],string pobraneWiersze[], size_t rozm_bazy, int liczba_odp)
+string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wiersze[],int wiersze_tmp[],string pobraneWiersze[], size_t rozm_bazy, int liczba_odp)
 {
      for (int j=0; j<3*liczba_pytan; j++){
          wybrane_wiersze[j] = wiersze_tmp[j];
@@ -160,7 +160,7 @@ string *pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
              {
                  tokenp = p.substr(0, posp);
                  //cout << tokenp << endl;
-                 punkt = tokenp;
+                 punkt = tokenp + " pkt";
                  p.erase(0, posp + delimiter.length());
                  pytanie = p;
 

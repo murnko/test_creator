@@ -28,7 +28,6 @@ error_handler  (HPDF_STATUS   error_no,
 //    HPDF_Page_ShowText(page, buf);
 //}
 
-//Polskie znaki by cpp0x
 typedef struct {
     char c;
     int i;

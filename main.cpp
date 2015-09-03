@@ -38,7 +38,42 @@ int main(int argc, char **argv)
                                 pobraneWiersze,rozm_bazy, liczba_odp);
 
 
-    char* testlibharu = "Ąą";
+    char* libHaruIN[20];
+    string linetmp;
+    int n = 0;
+    linetmp.append("1. ");
+    for (int i=0; i < 7*liczba_pytan+1; i++){
+
+
+        if (i != 0){
+        if (!(i%7)){
+
+//            cout <<linetmp<< endl;
+            libHaruIN[n] = strdup(linetmp.c_str());
+            cout <<libHaruIN[n]<<endl;
+            n++;
+            linetmp = "";
+            linetmp.append(to_string(n+1));
+            linetmp.append(". ");
+        }
+        }
+        linetmp.append(Output[i]);
+        linetmp.append(" ");
+//        char * out_tmp = new char[Output[i].size() + 1];
+//        copy(Output[i].begin(), Output[i].end(), out_tmp);
+//        out_tmp[Output[i].size()] = '\0';
+
+//        strcat(linetmp, out_tmp);
+//        delete out_tmp;
+        //libHaruIN[n] =
+        //strcpy (libHaruIN[n], out_tmp);
+        //strcat (libHaruIN[n]," ");
+        cout << "i= " << i << " n= " << n << endl;
+    }
+
+
+//LIBHARU
+    char* testlibharu = libHaruIN[0];
 
     HPDF_Doc  pdf;
     HPDF_Page page;
@@ -76,9 +111,13 @@ int main(int argc, char **argv)
     HPDF_Page_BeginText (page);
 
     HPDF_Page_SetFontAndSize (page, font, 10);
-    HPDF_Page_TextRect (page, 0, page_height-10, page_width, 0,
+    HPDF_Page_TextRect (page, 5, page_height-10, page_width, 0,
                 testlibharu, HPDF_TALIGN_JUSTIFY, NULL);
-
+    position = HPDF_Page_GetCurrentTextPos(page);
+    cout << position.x << endl;
+    cout << position.y << endl;
+//    HPDF_Page_TextRect (page, 0, position.y, page_width, 0,
+//                SAMPLE3, HPDF_TALIGN_JUSTIFY, NULL);
 
 
     HPDF_Page_EndText (page);

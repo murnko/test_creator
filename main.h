@@ -23,5 +23,4 @@ using namespace std;
 #include "funkcje.h"
 #include "libh.h"
 
-
 #endif // MAIN_H
