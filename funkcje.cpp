@@ -196,7 +196,7 @@ string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
 
              for (int q =0; q<liczba_odp-1; q++){
 
-                 odp[q] = bledne[q];
+                 odp[q] = "" bledne[q];
              }
 
              //na ostatniej pozycji dodana zostaje poprawna odpowiedz + mieszanie

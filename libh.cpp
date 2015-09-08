@@ -45,12 +45,13 @@ const static para odpowiedniki_polskich[] = {
     { "ą", 177 },
     { "ć", 230 },
     { "ę", 234 },
-    { "ó", 243 },
+
     { "ł", 179 },
     { "ń", 241 },
     { "ś", 182 },
     { "ź", 188 },
-    { "ż", 191 }
+    { "ż", 191 },
+        { "ó", 243 }
 };
 const int LICZBA_POLSKICH_ZNAKOW = sizeof( odpowiedniki_polskich ) / sizeof( para );
 
@@ -70,9 +71,12 @@ char * zamienZnaki( string wejsciowy)
         for (int z =0;z <99;z++){
 
             if (tablica_w[z]>0){
-                wyjsciowy[tablica_w[z]] =( char ) odpowiedniki_polskich[ i ].i;
-                if (odpowiedniki_polskich[ i ].s == "ó")
-                    memmove(wyjsciowy[tablica_w[z]+1], wyjsciowy[tablica_w[z] + 2], strlen(wyjsciowy) - tablica_w[z]+1);
+                if (target == "ó"){
+                    wyjsciowy[tablica_w[z]] =( char ) odpowiedniki_polskich[ i ].i;
+                    usunZNapisu(wyjsciowy,tablica_w[z] );
+                }
+                else
+                    wyjsciowy[tablica_w[z]] =( char ) odpowiedniki_polskich[ i ].i;
         }
         }
     }
@@ -92,12 +96,19 @@ void zamienZnakWCiagu( char * wejsciowy, unsigned char znak_obecny, unsigned cha
     }
 }
 
+//void usunBledy( char * wejsciowy){
+//    for( i = pozycja; i <strlen(wejsciowy); ++i ){
+//        if (wejsciowy[i] == 243){
+
+//        }
+//    }
+//}
+
 void usunZNapisu( char * wejsciowy, unsigned pozycja ) {
     unsigned i;
-    for( i = pozycja; i < strlen( wejsciowy ); ++i )
-         wejsciowy[ i ] = wejsciowy[ i + 1 ];
+    for( i = pozycja; i <strlen(wejsciowy); ++i )
+         wejsciowy[ i+1 ] = wejsciowy[ i + 2 ];
 
-    wejsciowy[ i ] = '\0';
 }
 
 //char * dodajOgonki( char * wejsciowy ) {
