@@ -159,7 +159,7 @@ string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
              {
                  tokenp = p.substr(0, posp);
                  //cout << tokenp << endl;
-                 punkt = tokenp + " pkt";
+                 punkt ="[" + tokenp + " pkt]";
                  p.erase(0, posp + delimiter.length());
                  pytanie = p;
 

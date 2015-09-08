@@ -16,7 +16,8 @@ void PrintText(HPDF_Page page);
 
 void zamienZnakWCiagu(char * wejsciowy, unsigned char znak_obecny, unsigned char znak_docelowy );
 void usunZNapisu(char * wejsciowy, unsigned pozycja );
-char * dodajOgonki( char* wejsciowy );
+
+char * zamienZnaki( string wejsciowy);
 
 
 #endif // LIBH

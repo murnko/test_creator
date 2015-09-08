@@ -24,10 +24,7 @@ jmp_buf env;
 
 int main(int argc, char **argv)
 {
-    string s = "ó";
-    cout << static_cast<int>(s[1]) << endl;
 
-    int tablica_w[25][100];
 
     baza_pytan.open("/media/murnko/store/projekty/studio1/Baza.txt");
     size_t rozm_bazy = sprawdz_baze(baza_pytan); //DONE
@@ -43,29 +40,13 @@ int main(int argc, char **argv)
 
 
     char* libHaruIN[20];
-    char* linetmpchar;
     string linetmp;
-    size_t pos;
-    string target = "ł";
     int n = 0;
     linetmp.append("1. ");
     for (int i=0; i < 7*liczba_pytan+1; i++){
-
-
         if (i != 0){
-        if (!(i%7)){
-            cout <<linetmp<< endl;
-            int idx = 0, loop = 0 ;
-
-            while (idx != -1){
-
-            idx = linetmp.find(target,idx+1);
-            tablica_w[n][loop] = idx;
-            loop++;
-            }
-            libHaruIN[n] = strdup(linetmp.c_str());
-            libHaruIN[n] = dodajOgonki(libHaruIN[n]);
-            cout <<libHaruIN[n]<<endl;
+        if (!(i%7)){ //za każdym razem gdy pytanie i odpowiedzi zostaną skomponowane w jeden rekord
+            libHaruIN[n] = zamienZnaki(linetmp);
             n++;
             linetmp = "";
             linetmp.append(to_string(n+1));
@@ -74,21 +55,11 @@ int main(int argc, char **argv)
         }
         linetmp.append(Output[i]);
         linetmp.append(" ");
-//        char * out_tmp = new char[Output[i].size() + 1];
-//        copy(Output[i].begin(), Output[i].end(), out_tmp);
-//        out_tmp[Output[i].size()] = '\0';
-
-//        strcat(linetmp, out_tmp);
-//        delete out_tmp;
-        //libHaruIN[n] =
-        //strcpy (libHaruIN[n], out_tmp);
-        //strcat (libHaruIN[n]," ");
-        cout << "i= " << i << " n= " << n << endl;
     }
 
 
 //LIBHARU
-    char* testlibharu = libHaruIN[0];
+//    char* testlibharu = libHaruIN[0];
 //    char* testlibharu = "żżż";
 
 
@@ -99,7 +70,7 @@ int main(int argc, char **argv)
     HPDF_Font font;
     HPDF_REAL page_height, page_width;
     HPDF_Point position;
-//    testlibharu = dodajOgonki(testlibharu);
+   // testlibharu = dodajOgonki(testlibharu);
     strcpy (fname, argv[0]);
     strcat (fname, ".pdf");
 
