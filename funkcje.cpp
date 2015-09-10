@@ -66,7 +66,7 @@ void waga_pytan(ifstream &baza, int punkty[], int rozmiar){
     }
     baza.clear();
     baza.seekg(0,ios::beg);
-    cout << "koniec wag pytań";
+    //cout << "koniec wag pytań";
 }
 
 int wybierz_pytania(int tablica_wierszy[], int punkty[], size_t pkt, size_t baz)
@@ -123,11 +123,6 @@ string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
      for (int j=0; j<3*liczba_pytan; j++){
          wybrane_wiersze[j] = wiersze_tmp[j];
      }
-    //D
-    /*for (int i = 0; i <liczba_pytan*3; i++){
-     cout << wybrane_wiersze[i] << endl;
-    }*/
-    //endD
      int x = 0, y = 0;
      string kolejny_wiersz;
      for (int i = 0; i<rozm_bazy; i++){
@@ -143,6 +138,7 @@ string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
      string dobra;
      string pytanie;
      string * odp = new string [liczba_odp];
+     string * odp_wyj = new string [liczba_odp];
      string * Output = new string[2*liczba_pytan*(liczba_odp+2)+1];
 
      for(int i = 0; i < liczba_pytan; i++){
@@ -166,9 +162,9 @@ string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
              }
 
              dobra = pobraneWiersze[i*3+1];
-             cout <<"dobra: " << dobra << "dla i: "<< i << endl;
-             cout <<"waga: " << punkt << endl;
-             cout <<"pytanie: " << pytanie << endl;
+             //cout <<"dobra: " << dobra << "dla i: "<< i << endl;
+             //cout <<"waga: " << punkt << endl;
+             //cout <<"pytanie: " << pytanie << endl;
 
              string s = pobraneWiersze[i*3+2];
              size_t pos = 0;
@@ -186,7 +182,7 @@ string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
              pos = 0; n = 0;
              while ((pos = s.find(delimiter)) != std::string::npos) {
                  token = s.substr(0, pos);
-                 cout << token <<endl;
+                 //cout << token <<endl;
                  bledne[n] = token;
                  n++;
                  s.erase(0, pos + delimiter.length());
@@ -196,12 +192,22 @@ string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
 
              for (int q =0; q<liczba_odp-1; q++){
 
-                 odp[q] = "" bledne[q];
+                 odp[q] = bledne[q];
              }
 
              //na ostatniej pozycji dodana zostaje poprawna odpowiedz + mieszanie
+             int literal = 64;
+             //int nbsp = 160;
+             string nawiasl = "[";
+             string nawiasp = "]";
+             string dwukropek = ":";
              odp[liczba_odp-1] = dobra;
              shuffleS(odp, liczba_odp, i);
+             for (int q =0; q<liczba_odp; q++){
+                 literal++;
+                 odp_wyj[q] = nawiasl+ (char) literal + dwukropek +odp[q]+nawiasp;
+             }
+            odp = odp_wyj;
              //wybór punktow i pytania
              Output[7*i] = punkt;
              Output[7*i+1] = pytanie;
@@ -211,7 +217,7 @@ string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
                  //cout << odp[w] << endl;
              }
              Output[7*i+liczba_odp+3] = ' ';
-             cout << "koniecPytania" << endl;
+             //cout << "koniecPytania" << endl;
              }
      return  Output;
 }
