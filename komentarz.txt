@@ -3,7 +3,7 @@ PARSOWANIE BAZY
 1. Sprawdzenie bazy > OK
 2. Sprawdzenie rozmiaru bazy > OK
 3. Pobranie punktacji pytań > OK
-4. Wybór pytań > WARN -> czasem zasysa trzy "0" zamiast wierszy któregoś pytania, oczywiście rzutuje to na błędy w dalszej części, więc trzeba tego pilnować, dopóki nie zostanie poprawione (clue: możliwe, że robi tak dla ostatniegi pytania przeskakując w nulle)
+4. Wybór pytań > OK
 	Mieszanie > OK
 	Odczyt danych > OK
 	Naliczanie > OK
@@ -19,8 +19,23 @@ PARSOWANIE WIERSZY
 
 LIBHARU
 1. Kontrola pozycji kursora > OK
-2. Zamiana polskich znaków na działające >
+2. Zamiana polskich znaków na działające > OK
 3. Przygotowanie pytań do wrzucenia > OK
-4. Dodanie kratek odpowiedzi > PEND
-5. Kontynuacja pytania w tej samej linii > PEND
+4. Dodanie kratek odpowiedzi > OK
+5. Kontynuacja pytania w tej samej linii > OK
 6. Rysunki > PEND
+
+MULTITEST
+0. Pętla do generowania wielu testów > OK
+1. Przechowywanie danych o testach wygenerowanych
+        Numer testu
+        Indeks dobrej odpowiedzi
+2. Dodawanie stron do pdf'a
+3. Możliwość utworzenia testu na dwie strony (z tabelą odpowiedzi na ostatniej)
+4.
+
+
+DO POPRAWY
+1. usunąć zera z listy wierszy > OK
+2. Obcięcie rozmiaru kratki >
+3. Zmienny seed dla random

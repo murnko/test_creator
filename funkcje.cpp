@@ -90,20 +90,25 @@ shuffle(arr, baz/3);
     //cout << punkty[arr[i]] << endl;
 }*/
 //endD
-
+int pozycja_rzeczywista;
         for(int i = 0; i < baz/3; i++ ){
         //printf("%d ",  arr[i]+1);
 
         if (pkt >= punkty[arr[i]]){
         //cout << "waga = " << punkty[arr[i]] << endl;
+
+            pozycja_rzeczywista = i - (i - liczba_pytan);
             pkt = pkt - punkty[arr[i]];
-            tablica_wierszy[3*i] = arr[i]*3 + 1;
-            tablica_wierszy[1+3*i] = arr[i]*3 + 2;
-            tablica_wierszy[2+3*i] = arr[i]*3 + 3;
+            tablica_wierszy[3*pozycja_rzeczywista] = arr[i]*3 + 1;
+            tablica_wierszy[1+3*pozycja_rzeczywista] = arr[i]*3 + 2;
+            tablica_wierszy[2+3*pozycja_rzeczywista] = arr[i]*3 + 3;
             //cout << "pkt = " << pkt <<endl;
             liczba_pytan++;
 
             if (pkt == 0) {
+                for (int z=0; z < baz; z++){
+                    cout << tablica_wierszy[z] <<endl;
+                }
                 cout << "pktZero"<<endl;
                 sort(tablica_wierszy, tablica_wierszy+3*liczba_pytan);
 
@@ -120,9 +125,12 @@ shuffle(arr, baz/3);
 
 string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wiersze[],int wiersze_tmp[],string pobraneWiersze[], size_t rozm_bazy, int liczba_odp)
 {
+    baza_pytan.clear();
+    baza_pytan.seekg(0,ios::beg);
      for (int j=0; j<3*liczba_pytan; j++){
          wybrane_wiersze[j] = wiersze_tmp[j];
      }
+
      int x = 0, y = 0;
      string kolejny_wiersz;
      for (int i = 0; i<rozm_bazy; i++){
@@ -179,6 +187,7 @@ string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
              string * bledne = new string [n];
 
              s = pobraneWiersze[i*3+2];
+             cout<< pobraneWiersze[i*3+2] << endl;
              pos = 0; n = 0;
              while ((pos = s.find(delimiter)) != std::string::npos) {
                  token = s.substr(0, pos);
@@ -188,11 +197,13 @@ string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
                  s.erase(0, pos + delimiter.length());
              }
              shuffleS(bledne, n, 0);
-
+             for (int q =0; q<liczba_odp-1; q++){
+                 //cout << bledne[q] <<endl;
+             }
 
              for (int q =0; q<liczba_odp-1; q++){
 
-                 odp[q] = bledne[q];
+                 odp[q] =  bledne[q];
              }
 
              //na ostatniej pozycji dodana zostaje poprawna odpowiedz + mieszanie
@@ -218,6 +229,9 @@ string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
              }
              Output[7*i+liczba_odp+3] = ' ';
              //cout << "koniecPytania" << endl;
+             delete[] bledne;
              }
+
+
      return  Output;
 }
