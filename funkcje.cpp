@@ -17,7 +17,7 @@ void shuffle(int *arr, size_t n)
     if (n > 1)
     {
         size_t i;
-        srand(time(NULL));
+        //srand(time(NULL));
         for (i = 0; i < n - 1; i++)
         {
           size_t j = i + rand() / (RAND_MAX / (n - i) + 1);
@@ -33,7 +33,7 @@ void shuffleS(string *arr, int n, int seed)
     if (n > 1)
     {
         int i;
-        srand(time(NULL)+seed);
+        //srand(time(NULL)+seed);
         for (i = 0; i < n - 1; i++)
         {
           int j = i + rand() / (RAND_MAX / (n - i) + 1);
@@ -72,25 +72,25 @@ void waga_pytan(ifstream &baza, int punkty[], int rozmiar){
 int wybierz_pytania(int tablica_wierszy[], int punkty[], size_t pkt, size_t baz)
 {
 
-int liczba_pytan = 0;
-int * arr = new int[baz/3];
+    int liczba_pytan = 0;
+    int * arr = new int[baz/3];
 
-for (int i=0; i<baz/3; i++){
-    arr[i] = i;
-}
+    for (int i=0; i<baz/3; i++){
+        arr[i] = i;
+    }
 
-(int)pkt;
-shuffle(arr, baz/3);
+    (int)pkt;
+    shuffle(arr, baz/3);
 
-//tutaj po wybraniu każdego pytania należy je sprawdzić za ile jest punktów
+    //tutaj po wybraniu każdego pytania należy je sprawdzić za ile jest punktów
 
-//D
-/*for (int i=0; i<baz/3; i++){
-    //cout << arr[i] << " tab" << endl;
-    //cout << punkty[arr[i]] << endl;
-}*/
-//endD
-int pozycja_rzeczywista;
+    //D
+    /*for (int i=0; i<baz/3; i++){
+        //cout << arr[i] << " tab" << endl;
+        //cout << punkty[arr[i]] << endl;
+    }*/
+    //endD
+    int pozycja_rzeczywista;
         for(int i = 0; i < baz/3; i++ ){
         //printf("%d ",  arr[i]+1);
 
@@ -107,13 +107,13 @@ int pozycja_rzeczywista;
 
             if (pkt == 0) {
                 for (int z=0; z < baz; z++){
-                    cout << tablica_wierszy[z] <<endl;
+                    //cout << tablica_wierszy[z] <<endl;
                 }
                 cout << "pktZero"<<endl;
                 sort(tablica_wierszy, tablica_wierszy+3*liczba_pytan);
 
                 for (int j=0; j<baz; j++){
-                    cout << tablica_wierszy[j] << endl;
+                    //cout << tablica_wierszy[j] << endl;
                 }
 
                 cout<< "Wybranych pytan: " << liczba_pytan << endl;
@@ -123,7 +123,7 @@ int pozycja_rzeczywista;
     }
 }
 
-string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wiersze[],int wiersze_tmp[],string pobraneWiersze[], size_t rozm_bazy, int liczba_odp)
+string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wiersze[],int wiersze_tmp[],string pobraneWiersze[], size_t rozm_bazy, int liczba_odp, int *klucz_odp)
 {
     baza_pytan.clear();
     baza_pytan.seekg(0,ios::beg);
@@ -214,10 +214,17 @@ string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
              string dwukropek = ":";
              odp[liczba_odp-1] = dobra;
              shuffleS(odp, liczba_odp, i);
+             for (int d=0;d < liczba_odp;d++){
+                 if (odp[d] == dobra){
+                     klucz_odp[i] = d;
+                     break;
+                 }
+             }
              for (int q =0; q<liczba_odp; q++){
                  literal++;
                  odp_wyj[q] = nawiasl+ (char) literal + dwukropek +odp[q]+nawiasp;
              }
+
             odp = odp_wyj;
              //wybór punktow i pytania
              Output[7*i] = punkt;

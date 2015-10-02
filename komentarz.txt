@@ -27,15 +27,20 @@ LIBHARU
 
 MULTITEST
 0. Pętla do generowania wielu testów > OK
-1. Przechowywanie danych o testach wygenerowanych
-        Numer testu
-        Indeks dobrej odpowiedzi
-2. Dodawanie stron do pdf'a
+1. Przechowywanie danych o testach wygenerowanych > OK
+        Numer testu na stronie>
+        Indeks dobrej odpowiedzi > OK
+2. Dodawanie stron do pdf'a > OK
 3. Możliwość utworzenia testu na dwie strony (z tabelą odpowiedzi na ostatniej)
-4.
+4. Wzorzec odpowiedzi (na wszelki wypadek)
+
+AUTO-OCENA
+1.
+2.
+3.
 
 
 DO POPRAWY
 1. usunąć zera z listy wierszy > OK
 2. Obcięcie rozmiaru kratki >
-3. Zmienny seed dla random
+3. Zmienny seed dla random > OK

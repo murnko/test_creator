@@ -16,7 +16,7 @@ int liczba_pytan;
 //ARGUMENTY
 const int liczba_punktow = 3;
 const int liczba_odp = 4;
-const int LICZBA_ZESTAWOW = 2;
+const int LICZBA_ZESTAWOW = 5;
 
 ifstream baza_pytan;
 
@@ -50,24 +50,28 @@ int main(int argc, char **argv)
     font = HPDF_GetFont(pdf, fontname, "UTF-8");
     const char * utf = "UTF-8";
     HPDF_SetCurrentEncoder(pdf,utf);
-
-
+    int ** dobre_odpowiedzi = new int*[LICZBA_ZESTAWOW];
+    int * odp_pyt = new int[LICZBA_ZESTAWOW];
     baza_pytan.open("/media/store/GIT/test_creator/Baza.txt");
     size_t rozm_bazy = sprawdz_baze(baza_pytan);
     int punktacja[100]; //każdy wiersz odpowiada tabeli odpowiada za kolejne pyatnie
     waga_pytan(baza_pytan,punktacja,rozm_bazy);
 //POCZATEK PETLI DLA JEDNEGO TESTU
-for (int t=1; t <LICZBA_ZESTAWOW+1; t++)
+for (int t=0; t <LICZBA_ZESTAWOW; t++)
 {
     string pobraneWiersze[1024];
 
 
     int * wiersze_tmp = new int[rozm_bazy];
     liczba_pytan = wybierz_pytania(wiersze_tmp, punktacja, liczba_punktow,rozm_bazy);
+    dobre_odpowiedzi[t] = new int[liczba_pytan];
+    odp_pyt[t] = liczba_pytan;
     int * wybrane_wiersze = new int[3*liczba_pytan];
 
     string * Output = pobierz_pytania(baza_pytan,liczba_pytan,wybrane_wiersze,wiersze_tmp,
-                                pobraneWiersze,rozm_bazy, liczba_odp);
+                                pobraneWiersze,rozm_bazy,
+                                     liczba_odp,
+                                dobre_odpowiedzi[t]);
 
 
     char* libHaruIN[20];
@@ -157,7 +161,11 @@ HPDF_Page_Stroke (page);
 
 }
 // KONIEC PĘTLI DLA JEDNEGO TESTU
-
+for (int a=0;a<LICZBA_ZESTAWOW;a++){
+    for (int b=0;b<odp_pyt[a];b++){
+        cout << dobre_odpowiedzi[a][b]<<endl;
+    }
+}
 
 
     /* save the document to a file */
