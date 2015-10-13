@@ -28,14 +28,15 @@ LIBHARU
 MULTITEST
 0. Pętla do generowania wielu testów > OK
 1. Przechowywanie danych o testach wygenerowanych > OK
-        Numer testu na stronie>
+        Numer testu na stronie> OK
         Indeks dobrej odpowiedzi > OK
 2. Dodawanie stron do pdf'a > OK
-3. Możliwość utworzenia testu na dwie strony (z tabelą odpowiedzi na ostatniej)
+3. Możliwość utworzenia testu na dwie strony (z tabelą odpowiedzi na ostatniej) > WORK
+        Sprawdzenie czy jest miejsce na następne pytanie(???) > WORK
 4. Wzorzec odpowiedzi (na wszelki wypadek)
 
 AUTO-OCENA
-1.
+1. Ogarnięcie OPENCV
 2.
 3.
 
