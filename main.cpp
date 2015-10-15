@@ -46,14 +46,14 @@ int main(int argc, char **argv)
     HPDF_STATUS stat;
     stat = HPDF_UseUTFEncodings(pdf);
     cout << stat << endl;
-    fontname = HPDF_LoadTTFontFromFile(pdf,"/media/store/GIT/test_creator/Lato-Regular.ttf", HPDF_TRUE);
+    fontname = HPDF_LoadTTFontFromFile(pdf,"/home/murnko/Documents/test_creator/Lato-Regular.ttf", HPDF_TRUE);
     font = HPDF_GetFont(pdf, fontname, "UTF-8");
     const char * utf = "UTF-8";
     HPDF_SetCurrentEncoder(pdf,utf);
     int ** dobre_odpowiedzi = new int*[LICZBA_ZESTAWOW];
     int ** punkty_odpowiedzi = new int*[LICZBA_ZESTAWOW];
     int * odp_pyt = new int[LICZBA_ZESTAWOW];
-    baza_pytan.open("/media/store/GIT/test_creator/Baza.txt");
+    baza_pytan.open("/home/murnko/Documents/test_creator/Baza.txt");
     size_t rozm_bazy = sprawdz_baze(baza_pytan);
     int punktacja[100]; //każdy wiersz odpowiada tabeli odpowiada za kolejne pyatnie
     waga_pytan(baza_pytan,punktacja,rozm_bazy);
@@ -176,23 +176,31 @@ HPDF_Page_Stroke (page);
 }
  //KONIEC PĘTLI DLA JEDNEGO TESTU
 ofstream myfile;
-  myfile.open ("/media/store/GIT/test_creator/odpowiedzi.txt");
+  myfile.open ("/home/murnko/Documents/test_creator/odpowiedzi.txt");
 
 for (int a=0;a<LICZBA_ZESTAWOW;a++){
+
     cout << endl;
 
     for (int b=0;b<odp_pyt[a];b++){
         myfile << dobre_odpowiedzi[a][b];
+        myfile << "|";
         cout << dobre_odpowiedzi[a][b];
     }
+
     cout << endl;
     myfile << "\n";
     for (int b=0;b<odp_pyt[a];b++){
         myfile << punkty_odpowiedzi[a][b];
+        myfile << "|";
         cout << punkty_odpowiedzi[a][b];
     }
+
     myfile << "\n";
 }
+myfile << liczba_odp;
+myfile << "\n";
+myfile << "\n";
 myfile.close();
 
 
