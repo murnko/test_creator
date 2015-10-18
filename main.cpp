@@ -119,10 +119,10 @@ HPDF_Page_EndText (page);
 //numery pytań
 HPDF_Page_BeginText (page);
 
-string numer;
+//string numer;
     char numer_pytania[100];
     for (int i =0;i<liczba_pytan;i++ ){
-        numer = to_string(i+1);
+        //numer = to_string(i+1);
         //numer_pytania = strdup(numer.c_str());
         sprintf(numer_pytania, "%d", i+1);
         cout << numer_pytania << endl;
@@ -198,8 +198,7 @@ for (int a=0;a<LICZBA_ZESTAWOW;a++){
 
     myfile << "\n";
 }
-myfile << liczba_odp;
-myfile << "\n";
+myfile << liczba_odp; myfile << "\n";
 myfile << "\n";
 myfile.close();
 

@@ -159,7 +159,6 @@ string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
              size_t posp = 0;
              string tokenp;
 
-
              while ((posp = p.find(delimiter)) != std::string::npos)
              {
                  tokenp = p.substr(0, posp);
@@ -203,17 +202,15 @@ string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
                  //cout << bledne[q] <<endl;
              }
 
-             for (int q =0; q<liczba_odp-1; q++){
+             for (int q =0; q<liczba_odp-2; q++){
 
                  odp[q] =  bledne[q];
              }
 
              //na ostatniej pozycji dodana zostaje poprawna odpowiedz + mieszanie
-             int literal = 64;
+
              //int nbsp = 160;
-             string nawiasl = "[";
-             string nawiasp = "]";
-             string dwukropek = ":";
+
              odp[liczba_odp-1] = dobra;
              shuffleS(odp, liczba_odp, i);
              for (int d=0;d < liczba_odp;d++){
@@ -222,6 +219,10 @@ string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
                      break;
                  }
              }
+             int literal = 64;
+             string nawiasl = "[";
+             string nawiasp = "]";
+             string dwukropek = ":";
              for (int q =0; q<liczba_odp; q++){
                  literal++;
                  odp_wyj[q] = nawiasl+ (char) literal + dwukropek +odp[q]+nawiasp;
