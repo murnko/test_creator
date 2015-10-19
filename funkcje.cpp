@@ -202,7 +202,7 @@ string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
                  //cout << bledne[q] <<endl;
              }
 
-             for (int q =0; q<liczba_odp-2; q++){
+             for (int q =0; q<liczba_odp-1; q++){
 
                  odp[q] =  bledne[q];
              }
@@ -226,6 +226,7 @@ string* pobierz_pytania(ifstream &baza_pytan, int liczba_pytan, int wybrane_wier
              for (int q =0; q<liczba_odp; q++){
                  literal++;
                  odp_wyj[q] = nawiasl+ (char) literal + dwukropek +odp[q]+nawiasp;
+                 cout<<odp_wyj[q]<<endl;
              }
 
             odp = odp_wyj;
