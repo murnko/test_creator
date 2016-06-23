@@ -46,7 +46,8 @@ int main(int argc, char **argv)
     HPDF_STATUS stat;
     stat = HPDF_UseUTFEncodings(pdf);
     cout << stat << endl;
-    fontname = HPDF_LoadTTFontFromFile(pdf,"/home/murnko/Documents/test_creator/Lato-Regular.ttf", HPDF_TRUE);
+    //fontname = HPDF_LoadTTFontFromFile(pdf,"/home/murnko/Documents/test_creator/TimesF/times.ttf", HPDF_TRUE);
+    fontname = HPDF_LoadTTFontFromFile(pdf,"/home/murnko/Documents/test_creator/LatoF/Lato-Regular.ttf", HPDF_TRUE);
     font = HPDF_GetFont(pdf, fontname, "UTF-8");
     const char * utf = "UTF-8";
     HPDF_SetCurrentEncoder(pdf,utf);
@@ -102,7 +103,7 @@ for (int t=0; t <LICZBA_ZESTAWOW; t++)
     page_height = HPDF_Page_GetHeight(page);
     page_width = HPDF_Page_GetWidth(page);
     HPDF_Page_SetTextLeading (page, 20);
-    HPDF_Page_SetFontAndSize (page, font, 12);
+    HPDF_Page_SetFontAndSize (page, font, 10);
 
 //PYTANIA
 HPDF_Page_BeginText (page);
