@@ -98,16 +98,28 @@ for (int t=0; t <LICZBA_ZESTAWOW; t++)
 
 //LIBHARU
 
-    page = HPDF_AddPage (pdf);
-    HPDF_Page_SetSize (page, HPDF_PAGE_SIZE_A4, HPDF_PAGE_PORTRAIT);
-    page_height = HPDF_Page_GetHeight(page);
-    page_width = HPDF_Page_GetWidth(page);
-    HPDF_Page_SetTextLeading (page, 20);
-    HPDF_Page_SetFontAndSize (page, font, 10);
+page = HPDF_AddPage (pdf);
+HPDF_Page_SetSize (page, HPDF_PAGE_SIZE_A4, HPDF_PAGE_PORTRAIT);
+page_height = HPDF_Page_GetHeight(page);
+page_width = HPDF_Page_GetWidth(page);
+HPDF_Page_SetTextLeading (page, 20);
+HPDF_Page_SetFontAndSize (page, font, 10);
 
+char* nazwaEgzaminu = "TEST TESTOWANIA GRUPY TESTOWEJ";
+char* imieNazwisko = "Imię i Nazwisko: ________________________________";
+
+//NAGŁÓWEK
+HPDF_Page_BeginText (page);
+linijka = page_height-12;
+HPDF_Page_TextRect (page, 10,linijka , page_width-10, 0,
+            nazwaEgzaminu, HPDF_TALIGN_JUSTIFY, NULL);
+linijka = page_height-24;
+HPDF_Page_TextRect (page, 10,linijka , page_width-10, 0,
+            imieNazwisko, HPDF_TALIGN_JUSTIFY, NULL);
+HPDF_Page_EndText (page);
 //PYTANIA
 HPDF_Page_BeginText (page);
-    linijka = page_height-12;
+    linijka = page_height-38;
     for (int i =0; i<liczba_pytan;i++){
         HPDF_Page_TextRect (page, 10,linijka , page_width-10, 0,
                     libHaruIN[i], HPDF_TALIGN_JUSTIFY, NULL);
