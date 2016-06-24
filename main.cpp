@@ -17,6 +17,7 @@ int liczba_pytan;//decyduje algorytm, nie ustawiac samemu w tej wersji
 const int liczba_punktow = 20;
 const int liczba_odp = 4;
 const int LICZBA_ZESTAWOW = 15;
+char* nazwaEgzaminu = "TEST TESTOWANIA GRUPY TESTOWEJ";
 
 ifstream baza_pytan;
 
@@ -105,8 +106,8 @@ page_width = HPDF_Page_GetWidth(page);
 HPDF_Page_SetTextLeading (page, 20);
 HPDF_Page_SetFontAndSize (page, font, 10);
 
-char* nazwaEgzaminu = "TEST TESTOWANIA GRUPY TESTOWEJ";
-char* imieNazwisko = "Imię i Nazwisko: ________________________________";
+
+char* imieNazwisko = "Imię i Nazwisko: __________________________________________       Indeks: ";
 
 //NAGŁÓWEK
 HPDF_Page_BeginText (page);
@@ -140,7 +141,7 @@ HPDF_Page_BeginText (page);
         sprintf(numer_pytania, "%d", i+1);
         cout << numer_pytania << endl;
         //HPDF_Page_TextOut(page, 29+20*i,17+20*liczba_odp, numer_pytania 22+20*i+20,30+20*liczba_odp+20);
-        HPDF_Page_TextRect (page, 32+20*i,30+20*liczba_odp , 50+20*i,50+20*liczba_odp,
+        HPDF_Page_TextRect (page, 28+20*i,30+20*liczba_odp , 50+20*i,50+20*liczba_odp,
                     numer_pytania, HPDF_TALIGN_CENTER, NULL);
     }
 
@@ -168,7 +169,7 @@ HPDF_Page_EndText (page);
 
     //pionowe linie
     for (int i =0; i < liczba_pytan; i++){
-    HPDF_Page_Rectangle(page, 32+20*i,12,20,20*(liczba_odp+1));
+    HPDF_Page_Rectangle(page, 28+20*i,12,20,20*(liczba_odp+1));
     }
 
     //poziome linie
@@ -180,7 +181,7 @@ HPDF_Page_EndText (page);
     //kratki
     for(int h =0; h<liczba_odp; h++){
         for(int v = 0; v <liczba_pytan;v++){
-        HPDF_Page_Rectangle(page, 38+20*v,18+20*h,8,8);
+        HPDF_Page_Rectangle(page, 34+20*v,18+20*h,8,8);
         }
     }
 
